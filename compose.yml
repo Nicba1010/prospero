@@ -1,8 +1,7 @@
 services:
   prospero:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    env_file: .env
+    image: ghcr.io/nicba1010/prospero:latest
     volumes:
       - prospero_data:/data
     environment:
