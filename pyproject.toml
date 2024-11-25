@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "prospero"
+version = "0.1.0"
+description = ""
+authors = ["Roberto Anić Banić <roberto@banic.hr>"]
+
+[tool.poetry.scripts]
+prospero = "prospero.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+apprise= "^1.9.0"
+beautifulsoup4 = "^4.12.3"
+html5lib = "^1.1"
+loguru = "^0.7.2"
+requests = "^2.32.3"
+schedule = "^1.2.2"
+sqlalchemy = "^2.0.36"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

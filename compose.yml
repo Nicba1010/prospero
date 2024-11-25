@@ -1,0 +1,21 @@
+services:
+  prospero:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - prospero_data:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks:
+      - prospero_net
+
+volumes:
+  prospero_data:
+    name: prospero_data
+
+networks:
+  prospero_net:
+    name: prospero_network
+    driver: bridge
