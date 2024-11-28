@@ -27,7 +27,8 @@ class GavellaScheduleScraper(BaseScheduleScraper):
             place_div: Tag = schedule_entry_tr.find('div', {'class': 'place'})
             buy_tickets_a: Tag | None = schedule_entry_tr.find('a', {'class': 'btn btn-small btn-primary'})
 
-            title_a: Tag = schedule_entry_tr.find('a')
+            title_td: Tag
+            _, _, _, title_td, *_ = schedule_entry_tr.find_all('td')
 
             date_str: str = date_div.text.strip()
             date_str_no_day: str = date_str.split(',')[1].strip()
@@ -37,7 +38,7 @@ class GavellaScheduleScraper(BaseScheduleScraper):
                 f'{date_str_no_day} {time_str}',
                 '%d.%m.%Y. %H:%M'
             )
-            title: str = title_a.text.strip()
+            title: str = title_td.text.strip()
             note: str | None = note_div.text.strip() if note_div else None
             location: str = place_div.text.strip()
             if location.lower() in [
